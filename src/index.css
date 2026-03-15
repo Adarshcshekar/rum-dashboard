@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --c-bg:       #0a0b0d;
+  --c-surface1: #0f1114;
+  --c-surface2: #141720;
+  --c-surface3: #1c2030;
+  --c-surface4: #252a38;
+  --c-border:   #1e2433;
+  --c-amber:    #fbbf24;
+  --c-emerald:  #34d399;
+  --c-rose:     #fb7185;
+  --c-sky:      #38bdf8;
+  --c-text:     #e2e8f0;
+  --c-muted:    #64748b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--c-surface1); }
+::-webkit-scrollbar-thumb { background: var(--c-surface4); border-radius: 2px; }
+
+/* Mono text utility */
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Fade-up stagger animation */
+.stagger > * {
+  opacity: 0;
+  animation: fadeUp 0.4s ease forwards;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger > *:nth-child(6) { animation-delay: 0.30s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Grid line background for the main content area */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glow effects */
+.glow-amber { box-shadow: 0 0 20px rgba(251,191,36,0.15); }
+.glow-rose  { box-shadow: 0 0 20px rgba(251,113,133,0.15); }
+.glow-sky   { box-shadow: 0 0 20px rgba(56,189,248,0.15); }
+
+/* Status dot */
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
