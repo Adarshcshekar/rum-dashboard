@@ -7,6 +7,7 @@ const NAV = [
   { to: "/api-calls", icon: "⇄", label: "API Calls" },
   { to: "/performance", icon: "◎", label: "Performance" },
   { to: "/sessions", icon: "◉", label: "Sessions" },
+  { to: "/interactions", icon: "⊕", label: "Interactions" },
 ];
 
 export default function Sidebar({ appId, setAppId }) {
@@ -23,7 +24,7 @@ export default function Sidebar({ appId, setAppId }) {
               RUM
             </div>
             <div className="text-xs text-muted mono leading-none mt-0.5">
-              more-retail
+              picker-dashboard
             </div>
           </div>
         </div>

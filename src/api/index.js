@@ -17,6 +17,7 @@ export const api = {
   apiCalls: (p) => get("/api-calls", p),
   performance: (p) => get("/performance", p),
   pageViews: (p) => get("/page-views", p),
+  events: (p) => get("", p),
   health: () =>
     fetch(`${import.meta.env.VITE_API_URL}/health`).then((r) => r.json()),
 };
