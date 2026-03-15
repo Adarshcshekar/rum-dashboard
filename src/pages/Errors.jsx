@@ -44,7 +44,10 @@ export default function Errors({ appId }) {
       key: "message",
       label: "Message",
       render: (v) => (
-        <span className="mono text-xs text-slate-300 truncate max-w-xs block">
+        <span
+          className="mono text-xs text-slate-300 truncate max-w-xs block cursor-help"
+          title={v}
+        >
           {v}
         </span>
       ),
@@ -68,6 +71,21 @@ export default function Errors({ appId }) {
         <span className="mono text-xs text-sky-400">{v || "anon"}</span>
       ),
     },
+    {
+      key: "context",
+      label: "API URL",
+      render: (v) => {
+        const ctx = typeof v === "string" ? JSON.parse(v || "{}") : v || {};
+        return (
+          <span
+            className="mono text-xs text-sky-400 truncate max-w-xs block cursor-help"
+            title={ctx?.url || "—"}
+          >
+            {ctx?.url || "—"}
+          </span>
+        );
+      },
+    },
   ];
 
   const groupedColumns = [
@@ -81,7 +99,11 @@ export default function Errors({ appId }) {
     {
       key: "message",
       label: "Message",
-      render: (v) => <span className="mono text-xs text-slate-300">{v}</span>,
+      render: (v) => (
+        <span className="mono text-xs text-slate-300 cursor-help" title={v}>
+          {v}
+        </span>
+      ),
     },
     {
       key: "occurrences",
