@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 
 const NAV = [
-  { to: "/",            icon: "◈", label: "Overview"    },
-  { to: "/errors",      icon: "⚠", label: "Errors"      },
-  { to: "/api-calls",   icon: "⇄", label: "API Calls"   },
+  { to: "/", icon: "◈", label: "Overview" },
+  { to: "/errors", icon: "⚠", label: "Errors" },
+  { to: "/api-calls", icon: "⇄", label: "API Calls" },
   { to: "/performance", icon: "◎", label: "Performance" },
-  { to: "/sessions",    icon: "◉", label: "Sessions"    },
+  { to: "/sessions", icon: "◉", label: "Sessions" },
 ];
 
 export default function Sidebar({ appId, setAppId }) {
@@ -19,24 +19,28 @@ export default function Sidebar({ appId, setAppId }) {
             <span className="text-amber-400 text-xs mono font-bold">R</span>
           </div>
           <div>
-            <div className="text-sm font-semibold text-slate-200 leading-none">RUM</div>
-            <div className="text-xs text-muted mono leading-none mt-0.5">more-retail</div>
+            <div className="text-sm font-semibold text-slate-200 leading-none">
+              RUM
+            </div>
+            <div className="text-xs text-muted mono leading-none mt-0.5">
+              more-retail
+            </div>
           </div>
         </div>
       </div>
 
       {/* App selector */}
       <div className="px-4 py-3 border-b border-border">
-        <label className="text-xs mono text-muted uppercase tracking-wider block mb-1.5">App</label>
+        <label className="text-xs mono text-muted uppercase tracking-wider block mb-1.5">
+          App
+        </label>
         <select
           value={appId}
           onChange={(e) => setAppId(e.target.value)}
           className="w-full bg-surface-3 border border-border text-slate-300 text-xs mono rounded px-2.5 py-1.5 focus:outline-none focus:border-amber-500/50"
         >
           <option value="">All apps</option>
-          <option value="picker-app">picker-app</option>
-          <option value="manager-dashboard">manager-dashboard</option>
-          <option value="test-app">test-app</option>
+          <option value="picker-dashboard">picker-dashboard</option>
         </select>
       </div>
 
@@ -47,12 +51,14 @@ export default function Sidebar({ appId, setAppId }) {
             key={to}
             to={to}
             end={to === "/"}
-            className={({ isActive }) => clsx(
-              "flex items-center gap-3 px-3 py-2 rounded text-sm transition-all duration-150",
-              isActive
-                ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
-                : "text-muted hover:text-slate-300 hover:bg-surface-3"
-            )}
+            className={({ isActive }) =>
+              clsx(
+                "flex items-center gap-3 px-3 py-2 rounded text-sm transition-all duration-150",
+                isActive
+                  ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                  : "text-muted hover:text-slate-300 hover:bg-surface-3",
+              )
+            }
           >
             <span className="mono text-base leading-none">{icon}</span>
             <span className="font-medium">{label}</span>
