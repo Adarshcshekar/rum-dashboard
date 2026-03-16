@@ -16,6 +16,16 @@ import { format } from "date-fns";
 
 const fmt = (n, d = 0) => (n == null ? "—" : Number(n).toFixed(d));
 
+function maskUrl(url) {
+  if (!url) return "—";
+  try {
+    const u = new URL(url);
+    return u.pathname; // shows only /api/orders/:id, hides domain
+  } catch {
+    return url.replace(/https?:\/\/[^/]+/, "***"); // fallback
+  }
+}
+
 export default function ApiCalls({ appId }) {
   const [range, setRange] = useState(24 * 60 * 60 * 1000);
   const [slowOnly, setSlowOnly] = useState(false);
@@ -43,7 +53,9 @@ export default function ApiCalls({ appId }) {
     {
       key: "url",
       label: "Endpoint",
-      render: (v) => <span className="mono text-xs text-slate-300">{v}</span>,
+      render: (v) => (
+        <span className="mono text-xs text-slate-300">{maskUrl(v)}</span>
+      ),
     },
     {
       key: "call_count",
@@ -121,7 +133,7 @@ export default function ApiCalls({ appId }) {
       label: "URL",
       render: (v) => (
         <span className="mono text-xs text-slate-300 truncate max-w-xs block">
-          {v}
+          {maskUrl(v)}
         </span>
       ),
     },
